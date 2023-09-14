@@ -25,3 +25,7 @@ logs
 
 package-lock.json
 yarn.lock
+
+# Storybook
+.nuxt-storybook
+storybook-static
