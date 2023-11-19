@@ -1,7 +1,11 @@
 <!-- @format -->
 
 <template>
-  <button :class="`btn ${buttonType}`" @click="onClick">
+  <button
+    :class="`btn ${type}`"
+    class="py-3 px-5 border-none rounded transition-colors"
+    @click="onClick"
+  >
     <slot></slot>
   </button>
 </template>
@@ -10,9 +14,9 @@
 export default {
   name: "Button",
   props: {
-    buttonType: {
+    type: {
       type: String,
-      default: "primary", // default class name
+      default: "primary",
     },
   },
   emits: ["click"],
@@ -24,20 +28,11 @@ export default {
 };
 </script>
 
-<style scoped>
-.btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
+<style scoped lang="scss">
 .btn.primary {
-  background-color: blue;
-  color: white;
+  @apply bg-blue-500 text-white hover:bg-blue-600;
 }
 .btn.secondary {
-  background-color: gray;
-  color: white;
+  @apply border-2 border-solid border-blue-500 text-blue-500 hover:bg-blue-600 hover:border-blue-600 hover:text-white;
 }
 </style>

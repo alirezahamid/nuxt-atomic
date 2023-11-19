@@ -30,3 +30,4 @@ yarn.lock
 .nuxt-storybook
 storybook-static
 .vscode
+pnpm-lock.yaml

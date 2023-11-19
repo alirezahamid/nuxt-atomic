@@ -3,10 +3,10 @@
 import Button from "./Button.vue";
 
 export default {
-  title: "Components/Button",
+  title: "Atoms/Button",
   component: Button,
   argTypes: {
-    buttonType: { control: "text" },
+    type: { control: "text" },
     onClick: { action: "clicked" },
   },
 };
@@ -21,10 +21,10 @@ const Template = (args) => ({
 
 export const Primary = Template.bind({});
 Primary.args = {
-  buttonType: "primary",
+  type: "primary",
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  buttonType: "secondary",
+  type: "secondary",
 };
