@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <template>
-  <div class="login-page">
+  <div class="signup-page">
     <div class="bg-blue-50 h-screen flex justify-center items-center">
       <div class="bg-white px-6 py-8 shadow-md rounded-md max-w-lg">
         <h1 class="mb-8 text-3xl text-center">Signup</h1>
@@ -22,4 +22,8 @@
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+definePageMeta({
+  middleware: ["auth"],
+});
+</script>

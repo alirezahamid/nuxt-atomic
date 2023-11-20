@@ -5,6 +5,8 @@
     :type="inputType"
     :name="inputName"
     :placeholder="inputPlaceholder"
+    :value="modelValue"
+    @input="updateValue($event.target.value)"
     class="input"
   />
 </template>
@@ -23,16 +25,25 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  modelValue: {
+    type: String,
+    default: "",
+  },
 });
 
 const inputType = props.type;
 const inputName = props.name;
 const inputPlaceholder = props.placeholder;
+
+const emit = defineEmits(["update:modelValue"]);
+const updateValue = (value) => {
+  emit("update:modelValue", value);
+};
 </script>
 
 <style scoped>
 .input {
-  block: block;
+  display: block;
   border: 1px solid #d3d3d3;
   width: 100%;
   padding: 0.75rem;

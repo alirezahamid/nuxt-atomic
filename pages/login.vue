@@ -5,10 +5,20 @@
     <div class="bg-blue-50 h-screen flex justify-center items-center">
       <div class="bg-white px-6 py-8 shadow-md rounded-md max-w-lg">
         <h1 class="mb-8 text-3xl text-center">Login</h1>
-
-        <form class="w-[400px]">
-          <AtomsInput type="email" placeholder="Email" />
-          <AtomsInput type="password" placeholder="Password" />
+        <p></p>
+        <form class="w-[400px]" @submit.prevent="loginUser">
+          <AtomsInput
+            v-model="formData.email"
+            type="email"
+            name="email"
+            placeholder="Email"
+          />
+          <AtomsInput
+            v-model="formData.password"
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
           <AtomsButton type="secondary" class="w-full">Login</AtomsButton>
         </form>
         <p class="mt-3 text-sm">
@@ -19,4 +29,23 @@
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup lang="ts">
+import { useAuthStore } from "~/stores/auth.store";
+
+definePageMeta({
+  middleware: ["auth"],
+});
+
+const authStore = useAuthStore();
+const router = useRouter();
+
+const formData = reactive({
+  email: "",
+  password: "",
+});
+
+const loginUser = async () => {
+  await authStore.login(formData);
+  router.push("/me");
+};
+</script>
